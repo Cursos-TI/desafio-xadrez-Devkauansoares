@@ -1,37 +1,66 @@
 #include <stdio.h>
 
-// Desafio de Xadrez - MateCheck
-// Este código inicial serve como base para o desenvolvimento do sistema de movimentação das peças de xadrez.
-// O objetivo é utilizar estruturas de repetição e funções para determinar os limites de movimentação dentro do jogo.
+//Procedimento Recursivo Torre
+void torre(int controleTorre){
+    if(controleTorre > 0){
+        printf("Direita\n");
+        torre(--controleTorre);
+    }
+}
+
+//Procedimento Recursivo Bispo
+void bispo(int controleBispo){
+    if(controleBispo > 0){
+        for (int vertical = 0; vertical < 1; vertical ++){
+            printf("Cima-");
+            
+            for (int horizontal = 0; horizontal < 1; horizontal ++){
+                printf("Direita\n");
+            }
+        }
+        bispo(--controleBispo);
+    }
+}
+
+//Procedimento Recursivo Rainha
+void rainha(int controleRainha){
+    if(controleRainha > 0){
+        printf("Direita\n");
+        rainha(--controleRainha);
+
+    }
+}
+
+void cavalo(int controleCavalo) {
+
+    int movimentos = controleCavalo / 3;
+    for (int i = 0; i < movimentos; i++) {
+        for (int j = 0; j < 2; j++) {
+            printf("Cima\n");
+        }
+
+
+        for (int k = 0; k < 1; k++) {
+            printf("Direita\n");
+        }
+    }
+}
+
 
 int main() {
 
-    // Problemática: Criar um Algoritmo que simule o movimento de 3 cartas do Xadres.
-    //Torre: 5 casas para a direta;
-    //Bispo: 5 casas para cima e para a direira;
-    //Rainha: 8 casas para a direita.
-    
-    //Cada peça use uma estrutura de repetição. 
+    int casasTorre = 5, casasBispo = 5, casasRainha = 8, casasCavalo = 3;
+    printf("\n Jogada da Torre: \n");
+    torre(casasTorre);
 
-    int torre = 1, bispo = 1, rainha = 1;
+    printf("\n Jogada do Bispo: \n");
+    bispo(casasBispo);
 
-    printf(" Jogada da Torre: \n");
-    for (torre; torre <= 5; torre++) {
-        printf("Direita\n");
-    }
+    printf("\n Jogada da Rainha: \n");
+    rainha(casasRainha);
 
-    printf("\n\n Jogada do Bispo: \n");
-    while (bispo <= 5) {
-        printf("Cima-Direita\n");
-        bispo++;
-    }
+    printf("\n Jogada do Cavalo: \n");
+    cavalo(casasCavalo);
 
-    printf("\n\n Jogada da Rainha: \n");
-    do {
-        printf("Direita\n");
-        rainha++;
-    } while (rainha <= 8);
-
-    
     return 0;
 }
